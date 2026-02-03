@@ -7,13 +7,13 @@
 
 </center>
 
- The worlds #1 unfinished contest logger <sup>*According to my daughter Corinna.<sup>
+ The worlds #1 unfinished contest logger! <sup>*According to K6GTE's daughter Corinna.<sup>
 
-[![PyPI](https://img.shields.io/pypi/v/not1mm)](https://pypi.org/project/not1mm/)
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Python: 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Made With:PyQt6](https://img.shields.io/badge/Made%20with-PyQt6-blue)](https://pypi.org/project/PyQt6/)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-green.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Python: 3.10+](https://img.shields.io/badge/python-3.10+-green.svg)](https://www.python.org/downloads/)
+[![Made With:PyQt6](https://img.shields.io/badge/Made%20with-PyQt6-green)](https://pypi.org/project/PyQt6/)
 [![Code Maturity:Snot Nosed](https://img.shields.io/badge/Code%20Maturity-Snot%20Nosed-red)](https://xkcd.com/1695/)
+[![PyPI](https://img.shields.io/pypi/v/not1mm)](https://pypi.org/project/not1mm/)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/not1mm)](https://pypi.org/project/not1mm/)
 
 ![main screen](https://github.com/mbridak/not1mm/raw/master/pic/main.png)
@@ -22,7 +22,11 @@
 
 Not1MM's interface is a blatant ripoff of N1MM. It is NOT N1MM and any problem
 you have with this software should in no way reflect on their software.
+  This software is originally created by K6GTE, this fork is my lame attempt at contributing back.
+  Why do this?  Because I can, boredom, and I want to attempt porting this project to windows.
+    - netw3rkd - Bryan, 73 de K1BQY
 
+#### Everything past this point is from K6GTE' original repo. ####
 ### The What
 
 Not1MM is, in my opinion, a usable amateur radio, or HAM, contest logger. It's
@@ -33,7 +37,6 @@ and SQLite for the database.
 
 The primary target for this application is Linux. It may be able to run on other
 platforms, BSD and Windows. But I don't have a way, or desire, to directly support them.
-
 I've recently purchased an M4 Mac Mini, So I'll probably put more effort into that platform as well.
 
 ### The Why

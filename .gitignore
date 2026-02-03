@@ -1,4 +1,6 @@
 not1mm/.vscode
+.vscode/
+*.code-workspace
 /.venv
 /dist
 /build
@@ -34,3 +36,13 @@ not1mm/testing/readqso.py
 not1mm/rotator.cpp
 scratch.txt
 design.md
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+[Tt]hemes.db
+*.tmp
+*.temp
+*.log
+*.bak
+~$*
