@@ -12,6 +12,10 @@ For additional Karma, also consider running the automated tests:
 After `pip install pytest pytest-qt`, run
 `PYTHONPATH=$(pwd) pytest test/contests.py`.
 
+Pull requests are validated by GitHub Actions (lint, unit tests, build, and
+package validation) across a Python/PyQt matrix. Please ensure your branch
+passes these checks before requesting review.
+
 Please see [this](https://hynek.me/articles/pull-requests-branch/) page before
 you start writing code on your pull request. It will make your life a little
 easier.

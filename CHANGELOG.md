@@ -1,5 +1,12 @@
 # Changelog
 
+- [2026-02-03] Update project workflow.
+  - Migrate CI to GitHub Actions with a matrix for Python and PyQt checks.
+  - Add PR workflow: lint, unit tests, build, and package validation on pull requests.
+  - Enforce branch protection and required status checks on `master`.
+  - Document release process: use `uv build` + `uv pip install -e .` and automated tagging in Actions.
+  - Update `CONTRIBUTING.md` and PR templates to reflect the new workflow.
+
 - [2026-02-03] Update RST field highlighting on focus.
   - Add focus-based middle-character highlighting for RST fields when editing is enabled.
   - Rename Things_To_Do.md to TODO.md.
