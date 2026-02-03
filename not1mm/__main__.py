@@ -31,7 +31,7 @@ from shutil import copyfile
 import notctyparser
 
 from PyQt6 import QtCore, QtGui, QtWidgets, uic, QtNetwork
-from PyQt6.QtCore import QDir, Qt, QThread, QSettings, QCoreApplication
+from PyQt6.QtCore import QDir, Qt, QThread, QSettings, QCoreApplication, QEvent
 from PyQt6.QtGui import (
     QFontDatabase,
     QColorConstants,
@@ -100,6 +100,19 @@ from not1mm.rtc_service import RTCService
 poll_time = datetime.datetime.now()
 
 
+class RSTFieldEventFilter(QtCore.QObject):
+    """Event filter to highlight middle character of RST fields on focus."""
+
+    def __init__(self, parent, callback):
+        super().__init__(parent)
+        self.callback = callback
+
+    def eventFilter(self, obj, event):
+        if event.type() == QEvent.Type.FocusIn:
+            self.callback(obj)
+        return False
+
+
 class MainWindow(QtWidgets.QMainWindow):
     """
     The main window
@@ -159,6 +172,7 @@ class MainWindow(QtWidgets.QMainWindow):
         "ratewindow": False,
         "statisticswindow": False,
         "darkmode": True,
+        "edit_rst": False,
     }
     appstarted = False
     contact = {}
@@ -323,6 +337,14 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.cw_entry.textChanged.connect(self.handle_text_change)
         self.cw_entry.returnPressed.connect(self.toggle_cw_entry)
+
+        # Install event filters for RST field highlighting
+        self.sent.installEventFilter(
+            RSTFieldEventFilter(self, self.highlight_rst_middle_char)
+        )
+        self.receive.installEventFilter(
+            RSTFieldEventFilter(self, self.highlight_rst_middle_char)
+        )
 
         self.actionCW_Macros.triggered.connect(self.cw_macros_state_changed)
         self.actionCommand_Buttons_2.triggered.connect(
@@ -2833,7 +2855,7 @@ class MainWindow(QtWidgets.QMainWindow):
                     next_tab.setFocus()
                     next_tab.deselect()
                     next_tab.end(False)
-                    self.highlight_599(next_tab)
+                    self.highlight_rst_middle_char(next_tab)
                 return
             if self.receive.hasFocus():
                 logger.debug("From receive")
@@ -2842,7 +2864,7 @@ class MainWindow(QtWidgets.QMainWindow):
                     prev_tab.setFocus()
                     prev_tab.deselect()
                     prev_tab.end(False)
-                    self.highlight_599(prev_tab)
+                    self.highlight_rst_middle_char(prev_tab)
                 else:
                     next_tab = self.tab_next.get(self.receive)
                     next_tab.setFocus()
@@ -2856,12 +2878,13 @@ class MainWindow(QtWidgets.QMainWindow):
                     prev_tab.setFocus()
                     prev_tab.deselect()
                     prev_tab.end(False)
-                    self.highlight_599(prev_tab)
+                    self.highlight_rst_middle_char(prev_tab)
                 else:
                     next_tab = self.tab_next.get(self.other_1)
                     next_tab.setFocus()
                     next_tab.deselect()
                     next_tab.end(False)
+                    self.highlight_rst_middle_char(next_tab)
                 return
             if self.other_2.hasFocus():
                 logger.debug("From other_2")
@@ -2870,12 +2893,13 @@ class MainWindow(QtWidgets.QMainWindow):
                     prev_tab.setFocus()
                     prev_tab.deselect()
                     prev_tab.end(False)
-                    self.highlight_599(prev_tab)
+                    self.highlight_rst_middle_char(prev_tab)
                 else:
                     next_tab = self.tab_next.get(self.other_2)
                     next_tab.setFocus()
                     next_tab.deselect()
                     next_tab.end(False)
+                    self.highlight_rst_middle_char(next_tab)
                 return
             if self.callsign.hasFocus():
                 logger.debug("From callsign")
@@ -2898,7 +2922,7 @@ class MainWindow(QtWidgets.QMainWindow):
                     next_tab.setFocus()
                     next_tab.deselect()
                     next_tab.end(False)
-                    self.highlight_599(next_tab)
+                    self.highlight_rst_middle_char(next_tab)
                 return
         if event.key() == Qt.Key.Key_F1:
             if event.modifiers() == Qt.KeyboardModifier.ShiftModifier:
@@ -2948,9 +2972,19 @@ class MainWindow(QtWidgets.QMainWindow):
         if event.key() == Qt.Key.Key_F12:
             self.process_function_key(self.F12)
 
-    def highlight_599(self, field: QLineEdit) -> None:
-        if field.text() == "599" and self.pref.get("edit_rst", False):
-            field.setSelection(1, 1)
+    def highlight_rst_middle_char(self, field: QLineEdit) -> None:
+        """Highlight the middle character of RST field for easy editing.
+
+        When a 3-digit RST field (CW mode, e.g., "599") receives focus,
+        highlight the middle digit so the user can easily type a single
+        character to replace it (e.g., type "5" to change "599" to "559").
+        """
+        if not self.pref.get("edit_rst", False):
+            return
+
+        text = field.text()
+        if len(text) == 3:  # CW RST is 3 digits (e.g., "599", "579")
+            field.setSelection(1, 1)  # Select middle character at position 1
 
     def set_window_title(self) -> None:
         """

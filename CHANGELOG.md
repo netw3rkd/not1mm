@@ -1,5 +1,8 @@
 # Changelog
 
+- [2026-02-03] Update RST field highlighting on focus.
+  - Add focus-based middle-character highlighting for RST fields when editing is enabled.
+  - Rename Things_To_Do.md to TODO.md.
 - [2026-01-31] Merge pull request #491 from mbridak/account-for-password-prompt-case
   - Normalize case for login and password prompts in BandMapWindow
 - [2026-01-28] Merge pull request #485 from mbridak/484-1mm-doesnt-launch-if-the-route-to-flrig-fails
