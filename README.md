@@ -3,30 +3,33 @@
 
 # Not1MM
 
- ![logo](https://github.com/mbridak/not1mm/raw/master/not1mm/data/k6gte.not1mm.svg)
+ ![logo](https://github.com/netw3rkd/not1mm/raw/master/not1mm/data/k6gte.not1mm.svg)
 
 </center>
 
  The worlds #1 unfinished contest logger! <sup>*According to K6GTE's daughter Corinna.<sup>
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-green.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Python: 3.10+](https://img.shields.io/badge/python-3.10+-green.svg)](https://www.python.org/downloads/)
-[![Made With:PyQt6](https://img.shields.io/badge/Made%20with-PyQt6-green)](https://pypi.org/project/PyQt6/)
-[![Code Maturity:Snot Nosed](https://img.shields.io/badge/Code%20Maturity-Snot%20Nosed-red)](https://xkcd.com/1695/)
-[![PyPI](https://img.shields.io/pypi/v/not1mm)](https://pypi.org/project/not1mm/)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/not1mm)](https://pypi.org/project/not1mm/)
+[![License: GPL-3.0](https://img.shields.io/github/license/netw3rkd/not1mm?color=green)](https://github.com/netw3rkd/not1mm/blob/master/LICENSE)
+[![Python: 3.10+](https://img.shields.io/badge/python-3.10%2B-green?logo=python&logoColor=white)](https://www.python.org/downloads/)
+[![PyQt6](https://img.shields.io/badge/PyQt6-6.0%2B-green?logo=qt)](https://pypi.org/project/PyQt6/)
+[![GitHub Issues](https://img.shields.io/github/issues/netw3rkd/not1mm?color=orange&logo=github)](https://github.com/netw3rkd/not1mm/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/netw3rkd/not1mm?color=yellow&logo=github)](https://github.com/netw3rkd/not1mm)
+[![Platforms](https://img.shields.io/badge/platform-Linux%20%7C%20Windows%20%7C%20macOS-green)](https://github.com/netw3rkd/not1mm)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-![main screen](https://github.com/mbridak/not1mm/raw/master/pic/main.png)
+
+![main screen](https://github.com/netw3rkd/not1mm/raw/master/pic/main.png)
 
 ### The Elephant in the Room
 
 Not1MM's interface is a blatant ripoff of N1MM. It is NOT N1MM and any problem
 you have with this software should in no way reflect on their software.
-  This software is originally created by K6GTE, this fork is my lame attempt at contributing back.
+  This software is originally created by K6GTE, this fork is my lame attempt at contributing back. (I've also edited a ton of stuff, check the [CHANGELOG.md](CHANGELOG.md) for details.)
   Why do this?  Because I can, boredom, and I want to attempt porting this project to windows.
     - netw3rkd - Bryan, 73 de K1BQY
 
-#### Everything past this point is from K6GTE' original repo. ####
+### Everything past this point is from K6GTE' original repo, with some minor rearrangement. ###
+
 ### The What
 
 Not1MM is, in my opinion, a usable amateur radio, or HAM, contest logger. It's
@@ -52,58 +55,6 @@ and mature. It just wasn't for me.
 
 Not1MM is, at times, fairly stable. Recently, it would seem that I'm desperately trying to change that. The current focus of development is adding support for [Multi Multi](Multi-Multi.md) contest operations. It is something that I have no practical experience in. So you can expect the same quality of code fit and finish.
 
-## Our Code Contributors ✨
-
-I wish to thank those who've contributed to the project. Below is an automatically
-generated, 'cause I'm lazy, list of those who've submitted PR's.
-
-<a href="https://github.com/mbridak/not1mm/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=mbridak/not1mm" alt="Avatar icons for code contributors." />
-</a>
-
-## Recent Changes
-
-- [2026-02-03] Update project workflow.
-  - Migrate CI to GitHub Actions with a matrix for Python and PyQt checks.
-  - Add PR workflow: lint, unit tests, build, and package validation on pull requests.
-  - Enforce branch protection and required status checks on `master`.
-  - Document release process: use `uv build` + `uv pip install -e .` and automated tagging in Actions.
-  - Update `CONTRIBUTING.md` and PR templates to reflect the new workflow.
-- [2026-02-03] Update RST field highlighting on focus.
-  - Add focus-based middle-character highlighting for RST fields when editing is enabled.
-  - Rename Things_To_Do.md to TODO.md.
-- [2026-01-31] Merge pull request #491 from mbridak/account-for-password-prompt-case
-  - Normalize case for login and password prompts in BandMapWindow
-- [2026-01-28] Merge pull request #485 from mbridak/484-1mm-doesnt-launch-if-the-route-to-flrig-fails
-  - Enhance Cabrillo export mode identifiers for Winter Field Day plugin
-  - Add TimeoutError handling in CAT class methods
-  - Add OSError handling in CAT class methods
-- [2026-01-24] Merge pull request #481 from mbridak/478-crashes-save-qso
-  - Add error handling for data parsing in MainWindow class
-- [2026-01-23] Merge pull request #477 from mbridak/highlight-599
-  - Add edit_rst checkbox to settings and update highlight logic for QLineEdit
-  - Add scripts to log and process git commit messages
-- [2026-01-19] Enhance tab navigation: add highlight for '599' input in QLineEdit fields
-  - Update installation command in version update prompt
-  - Update numpy and soundfile module sources to use wheel files and updated SHA256 checksums
-- [26-1-18] Merged PR from @perja12, Fixing a crash when calling rigctl before it is ready.
-- [26-1-13] Update runtime and base versions to 6.9 in YAML configuration.
-  - Enhance python3-modules.yaml with new dependencies and updated package sources.
-- [26-1-7] Refactor contest exchanges table formatting and add contest points and mults documentation.
-  - Add SOAPBOX_HINT to various contest plugins and update placeholder texts in NewContest dialog.
-- [26-1-4] Added D-Bus notification helper class.
-  - Add type hints for method parameters in MainWindow and DataBase classes.
-
-See [CHANGELOG.md](CHANGELOG.md) for prior changes.
-
-## Installation
-
-To install not1mm please see the [installation](INSTALL.md) section.
-
-## Documentation
-
-I've nuked 90% of the README.md and moved it to a LaTeX file. So now you can get the [user manual](https://github.com/mbridak/not1mm/raw/master/not1mm.pdf) as a PDF file. I know some WILL NOT LIKE THIS. Sorry, not sorry.
-
 ## Features
 
 A quick feature list, See the user manual for more details.
@@ -118,3 +69,25 @@ A quick feature list, See the user manual for more details.
 - WSJT-X FT8/FT4/ETC and FLDIGI RTTY
 - ADIF and Cabrillo output.
 - And *Other Stuff*
+
+## Installation
+
+To install not1mm please see the [installation](INSTALL.md) section.
+
+## Documentation
+
+Get the [user manual](https://github.com/netw3rkd/not1mm/raw/master/not1mm.pdf) as a PDF file.
+
+## Recent Changes
+
+See [CHANGELOG.md](CHANGELOG.md) for prior changes.
+
+## Our Code Contributors ✨
+
+Thank you to K6GTE for creating this project and sharing it with the rest of us!
+
+Below is an automatically generated, list of those who've submitted PR's.
+
+<a href="https://github.com/netw3rkd/not1mm/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=netw3rkd/not1mm" alt="Avatar icons for code contributors." />
+</a>
