@@ -1,5 +1,8 @@
 # Changelog
 
+- [2026-02-03] Add Black formatting workflow.
+  - Introduce a CI workflow to run Black for formatting enforcement.
+
 - [2026-02-03] Update project workflow.
   - Migrate CI to GitHub Actions with a matrix for Python and PyQt checks.
   - Add PR workflow: lint, unit tests, build, and package validation on pull requests.
